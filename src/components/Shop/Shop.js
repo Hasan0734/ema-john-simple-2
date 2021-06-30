@@ -12,7 +12,7 @@ const Shop = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch('https://damp-temple-19778.herokuapp.com/products')
     .then(res => res.json())
     .then(data => setProducts(data))
   }, [])
@@ -20,7 +20,7 @@ const Shop = () => {
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    fetch('http://localhost:5000/productByKeys', {
+    fetch('https://damp-temple-19778.herokuapp.com/productByKeys', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(productKeys)
