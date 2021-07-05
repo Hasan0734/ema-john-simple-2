@@ -23,12 +23,23 @@ export const handleGoogleSignIn = () => {
         photo: photoURL,
         success: true
       };
+      setUserToken();
       return signedInUser;
     })
     .catch((err) => {
       console.log(err.message);
     });
 };
+ 
+const setUserToken = () => {
+  firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+    // Send token to your backend via HTTPS
+     sessionStorage.setItem('token', idToken)   
+
+  }).catch(function(error) {
+    // Handle error
+  });
+} 
 
 export const handleFbSignin = () => {
   const fbProvider = new firebase.auth.FacebookAuthProvider();
