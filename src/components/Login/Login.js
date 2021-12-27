@@ -29,28 +29,28 @@ function Login() {
 
   const googleSignIn = () => {
     handleGoogleSignIn()
-    .then((res) => {
-      handleResponse(res, true)
-    });
+      .then((res) => {
+        handleResponse(res, true)
+      });
   };
   const fbSignIn = () => {
     handleFbSignin()
-    .then((res) => {
-      handleResponse(res, true)
-    });
+      .then((res) => {
+        handleResponse(res, true)
+      });
   }
   const signOut = () => {
     handlegoogleSignOut()
-    .then((res) => {
-  handleResponse(res, false)
-    });
+      .then((res) => {
+        handleResponse(res, false)
+      });
   };
-  const handleResponse = (res, redirect) =>{
+  const handleResponse = (res, redirect) => {
     setUser(res);
     setLoggedInUser(res);
-   if (redirect) {
-    history.replace(from);
-   }
+    if (redirect) {
+      history.replace(from);
+    }
   }
   const handleBlur = (e) => {
     let isFieldValid = true;
@@ -71,15 +71,15 @@ function Login() {
   const handleSubmit = (e) => {
     if (newUser && user.email && user.password) {
       createUserWithEmailAndPassword(user.name, user.email, user.password)
-      .then(res => {
-        handleResponse(res, true)
-      })
+        .then(res => {
+          handleResponse(res, true)
+        })
     }
     if (!newUser && user.email && user.password) {
       signInWithEmailAndPassword(user.email, user.password)
-      .then(res => {
-        handleResponse(res, true)
-      })
+        .then(res => {
+          handleResponse(res, true)
+        })
     }
     e.preventDefault();
   };

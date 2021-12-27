@@ -39,8 +39,7 @@ const Shipment = () => {
       }
     })
   }
-  console.log(watch("example"));
- 
+
   return (
     <div className="row">
       <div style={{display: shipingData ? 'none': 'block'}} className="col-md-6">
